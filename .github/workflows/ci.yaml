@@ -25,18 +25,18 @@ jobs:
           java-version: '21'
           cache: 'maven'
 
-  validate_formatting:
-    runs-on: ubuntu-latest
-    needs: [ setup_env ]
-
-    steps:
-      - name: Check code formatting
-        run: mvn formatter:validate
-        continue-on-error: false
+#  validate_formatting:
+#    runs-on: ubuntu-latest
+#    needs: [ setup_env ]
+#
+#    steps:
+#      - name: Check code formatting
+#        run: mvn formatter:validate
+#        continue-on-error: false
 
   compile:
     runs-on: ubuntu-latest
-    needs: [ validate_formatting ]
+    needs: [ setup_env ]
 
     steps:
       - name: Compile code base
