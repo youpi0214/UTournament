@@ -21,11 +21,9 @@ public class BracketAssembler {
 
     private class ToDtoVisitor implements BracketVisitor {
 
-        private BracketDto dto
-                ;
+        private BracketDto dto;
 
         BracketDto getDto()
-
 
         {
             System.out.println("BracketAssembler.ToDtoVisitor.getDto");
