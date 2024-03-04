@@ -5,12 +5,13 @@ on:
     branches:
       - main
       - experimental
+      - "tp*"
 
   pull_request:
     branches:
       - main
       - experimental
-      - "tp*"
+
 
 jobs:
   setup_env:
