@@ -69,7 +69,8 @@ jobs:
             
             const response = await github.request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs');
             const jobs = response.data.jobs;
-            
+            console.log(`Failed jobs: ${jobs}`);
+
 #            let message = '';
 #            const failedJob = context.job;
 #            console.log(`Failed job: ${jobs}`);
