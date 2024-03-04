@@ -82,27 +82,27 @@ jobs:
             const { owner, repo } = context.repo;
             const { number, pull_request } = context.issue;
             
-            if (pull_request) {
+        
             
-              let message = '';
-              const failedJobs = context.payload.workflow_run.jobs.filter(job => job.conclusion === 'failure');   
+            let message = '';
+            const failedJobs = context.payload.workflow_run.jobs.filter(job => job.conclusion === 'failure');   
+          
+            if (failedJobs.length > 0) {
+              message = 'The following job failed:\n';
+              message += `\t- ${failedJobs[0]}\n`;
+              message += '\nRemember: always format, compile and test your code before pushing.\nThanks!'
+          
+          
+              const body = {
+                owner,
+                repo,
+                issue_number: number,
+                body: message
+              };
+          
+              await github.rest.issues.createComment(body);
+            } 
             
-              if (failedJobs.length > 0) {
-                message = 'The following job failed:\n';
-                message += `\t- ${failedJobs[0]}\n`;
-                message += '\nRemember: always format, compile and test your code before pushing.\nThanks!'
-            
-            
-                const body = {
-                  owner,
-                  repo,
-                  issue_number: number,
-                  body: message
-                };
-            
-                await github.rest.issues.createComment(body);
-              } 
-            }
             
             
 
