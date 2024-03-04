@@ -5,12 +5,10 @@ on:
     branches:
       - main
       - experimental
-
   pull_request:
     branches:
       - main
       - experimental
-
 
 jobs:
   setup_env:
