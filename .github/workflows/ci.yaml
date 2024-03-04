@@ -67,24 +67,26 @@ jobs:
             const { owner, repo } = context.repo;
             const { number } = context.issue;
             
+            const response = await github.request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs');
+            const jobs = response.data.jobs;
             
-            let message = '';
-            const failedJob = context.job;
-            console.log(`Failed job: ${failedJob}`);
-          
-            message = 'The following job failed:\n';
-            message += `\t- ${failedJob}\n`;
-            message += '\nRemember: always format, compile and test your code before pushing.\nThanks!'
-        
-        
-            const body = {
-              owner,
-              repo,
-              issue_number: number,
-              body: message
-            };
-        
-            await github.rest.issues.createComment(body);
+#            let message = '';
+#            const failedJob = context.job;
+#            console.log(`Failed job: ${jobs}`);
+#
+#            message = 'The following job failed:\n';
+#            message += `\t- ${failedJob}\n`;
+#            message += '\nRemember: always format, compile and test your code before pushing.\nThanks!'
+#
+#
+#            const body = {
+#              owner,
+#              repo,
+#              issue_number: number,
+#              body: message
+#            };
+#
+#            await github.rest.issues.createComment(body);
             
             
             
