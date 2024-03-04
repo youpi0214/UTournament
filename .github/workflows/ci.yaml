@@ -66,13 +66,12 @@ jobs:
             const { number } = context.issue;
             
             let message = '';
-            const failedJobs = github.workflow_run.jobs.filter(job => job.conclusion === 'failure');
+            const failedJobs = workflow_run.jobs.filter(job => job.conclusion === 'failure');
             message += `🚨 CI failed job ${failedJobs.length}\n\n`;
             
             if (failedJobs.length > 0) {
               const failedJob = failedJobs[0]; // only one job can fail since we have continue-on-error: false
               message = `❌ ${failedJob.name} failed`;
-            }
             
             message += '\n\nRemember: always format, compile and test your code before pushing.\nThanks!';
             
@@ -84,3 +83,4 @@ jobs:
             };
             
             await github.rest.issues.createComment(body);
+            }
