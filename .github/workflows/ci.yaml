@@ -26,36 +26,40 @@ jobs:
           java-version: '21'
           cache: 'maven'
 
-  validate_formatting:
-    runs-on: ubuntu-latest
-    needs: [ setup_env ]
-
-    steps:
       - name: Check code formatting
         run: mvn formatter:validate
         continue-on-error: false
 
-  compile:
-    runs-on: ubuntu-latest
-    needs: [ validate_formatting ]
-
-    steps:
-      - name: Compile code base
-        run: mvn compile
-        continue-on-error: false
-
-  run_tests:
-    runs-on: ubuntu-latest
-    needs: [ compile ]
-
-    steps:
-      - name: Run tests
-        run: mvn test
-        continue-on-error: false
+#  validate_formatting:
+#    runs-on: ubuntu-latest
+#    needs: [ setup_env ]
+#
+#    steps:
+#      - name: Check code formatting
+#        run: mvn formatter:validate
+#        continue-on-error: false
+#
+#  compile:
+#    runs-on: ubuntu-latest
+#    needs: [ validate_formatting ]
+#
+#    steps:
+#      - name: Compile code base
+#        run: mvn compile
+#        continue-on-error: false
+#
+#  run_tests:
+#    runs-on: ubuntu-latest
+#    needs: [ compile ]
+#
+#    steps:
+#      - name: Run tests
+#        run: mvn test
+#        continue-on-error: false
 
   notify_on_failure_if_pr:
     runs-on: ubuntu-latest
-    needs: [ validate_formatting, compile, run_tests ]
+    needs: [ validate_formatting, compile, run_tests, setup_env]
 
     if: failure()
 
