@@ -24,7 +24,6 @@ public class BracketAssembler {
         private BracketDto dto;
 
         BracketDto getDto() {
-            System.out.println("BracketAssembler.ToDtoVisitor.getDto");
             return dto;
         }
 
