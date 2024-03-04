@@ -54,7 +54,7 @@ jobs:
 
   notify_on_failure:
     runs-on: ubuntu-latest
-    needs: [ validate_formatting, compile, run_tests, setup_env ]
+    needs: [ compile, run_tests, setup_env ]
 
     if: failure()
 
