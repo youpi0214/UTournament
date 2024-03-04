@@ -84,4 +84,4 @@ jobs:
               body: message
             };
             
-            await github.issues.createComment(body);
+            await github.rest.issues.createComment(body);
