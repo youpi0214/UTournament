@@ -39,6 +39,8 @@ jobs:
     needs: [ setup_env ]
 
     steps:
+      - name: list files
+        run: ls -la
       - name: Compile code base
         run: mvn compile
         continue-on-error: false
