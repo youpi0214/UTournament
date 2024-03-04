@@ -31,8 +31,10 @@ public class BracketId {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         BracketId bracketId = (BracketId) o;
         return Objects.equals(id, bracketId.id);
     }

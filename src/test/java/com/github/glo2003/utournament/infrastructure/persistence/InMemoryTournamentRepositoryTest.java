@@ -23,9 +23,7 @@ class InMemoryTournamentRepositoryTest {
         repository = new InMemoryTournamentRepository();
         List<Participant> participants = List.of();
         String tournamentName = "smash";
-        tournament = new Tournament(new TournamentId(),
-                tournamentName,
-                participants,
+        tournament = new Tournament(new TournamentId(), tournamentName, participants,
                 new ByeBracket(new BracketId(), new Participant("Alice")));
         tournamentId = tournament.getTournamentId();
     }

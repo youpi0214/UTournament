@@ -72,10 +72,12 @@ class BracketFactoryTest {
     boolean isInBracket(Participant participant, Bracket bracket) throws RuntimeException {
         if (bracket instanceof IntermediateBracket) {
             IntermediateBracket intermediateBracket = (IntermediateBracket) bracket;
-            return isInBracket(participant, intermediateBracket.getBracketOne()) || isInBracket(participant, intermediateBracket.getBracketTwo());
+            return isInBracket(participant, intermediateBracket.getBracketOne())
+                    || isInBracket(participant, intermediateBracket.getBracketTwo());
         } else if (bracket instanceof SingleBracket) {
             SingleBracket singleBracket = (SingleBracket) bracket;
-            return singleBracket.getParticipantOne().equals(participant) || singleBracket.getParticipantTwo().equals(participant);
+            return singleBracket.getParticipantOne().equals(participant)
+                    || singleBracket.getParticipantTwo().equals(participant);
         } else if (bracket instanceof ByeBracket) {
             ByeBracket byeBracket = (ByeBracket) bracket;
             return byeBracket.getParticipant().equals(participant);
@@ -96,7 +98,8 @@ class BracketFactoryTest {
     boolean areAllBracketsSingle(Bracket bracket) {
         if (bracket instanceof IntermediateBracket) {
             IntermediateBracket intermediateBracket = (IntermediateBracket) bracket;
-            return areAllBracketsSingle(intermediateBracket.getBracketOne()) && areAllBracketsSingle(intermediateBracket.getBracketTwo());
+            return areAllBracketsSingle(intermediateBracket.getBracketOne())
+                    && areAllBracketsSingle(intermediateBracket.getBracketTwo());
         } else {
             return bracket instanceof SingleBracket;
         }
@@ -114,7 +117,8 @@ class BracketFactoryTest {
     private boolean existAByeBracket(Bracket bracket) {
         if (bracket instanceof IntermediateBracket) {
             IntermediateBracket intermediateBracket = (IntermediateBracket) bracket;
-            return existAByeBracket(intermediateBracket.getBracketOne()) || existAByeBracket(intermediateBracket.getBracketTwo());
+            return existAByeBracket(intermediateBracket.getBracketOne())
+                    || existAByeBracket(intermediateBracket.getBracketTwo());
         } else {
             return bracket instanceof ByeBracket;
         }

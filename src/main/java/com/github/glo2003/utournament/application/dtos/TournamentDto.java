@@ -11,10 +11,13 @@ public class TournamentDto {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         TournamentDto that = (TournamentDto) o;
-        return Objects.equals(tournamentId, that.tournamentId) && Objects.equals(name, that.name) && Objects.equals(participants, that.participants) && Objects.equals(bracket, that.bracket);
+        return Objects.equals(tournamentId, that.tournamentId) && Objects.equals(name, that.name)
+                && Objects.equals(participants, that.participants) && Objects.equals(bracket, that.bracket);
     }
 
     @Override

@@ -19,8 +19,7 @@ public class TournamentAssembler {
 
         dto.tournamentId = tournament.getTournamentId().toString();
         dto.name = tournament.getName();
-        dto.participants = tournament.getParticipants().stream()
-                .map(participantAssembler::toDto)
+        dto.participants = tournament.getParticipants().stream().map(participantAssembler::toDto)
                 .collect(Collectors.toList());
         dto.bracket = bracketAssembler.toDto(tournament.getBracket());
 

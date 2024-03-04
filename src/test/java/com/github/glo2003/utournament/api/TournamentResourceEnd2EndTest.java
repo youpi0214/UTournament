@@ -68,7 +68,8 @@ class TournamentResourceEnd2EndTest {
 
     @Test
     void namesNotUniqueInCreationReturnsBadRequest() {
-        List<ParticipantDto> participantDtos = ParticipantTestUtils.createParticipantDtosWithDuplicates(NUM_PARTICIPANTS);
+        List<ParticipantDto> participantDtos = ParticipantTestUtils
+                .createParticipantDtosWithDuplicates(NUM_PARTICIPANTS);
 
         Response response = createTournament(TOURNAMENT_NAME, participantDtos);
 

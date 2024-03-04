@@ -8,9 +8,12 @@ public class IntermediateBracketDto extends BracketDto {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        if (!super.equals(o))
+            return false;
         IntermediateBracketDto that = (IntermediateBracketDto) o;
         return Objects.equals(bracketOne, that.bracketOne) && Objects.equals(bracketTwo, that.bracketTwo);
     }

@@ -1,6 +1,5 @@
 package com.github.glo2003.utournament.entities;
 
-
 import com.github.glo2003.utournament.entities.bracket.Bracket;
 import com.github.glo2003.utournament.entities.bracket.BracketFactory;
 import com.github.glo2003.utournament.entities.exceptions.NamesNotUniqueException;

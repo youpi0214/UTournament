@@ -32,9 +32,7 @@ public class BracketAssembler {
             ByeBracketDto dto = new ByeBracketDto();
 
             dto.bracketId = bracket.getBracketId().toString();
-            dto.winner = bracket.getWinner()
-                    .map(participantAssembler::toDto)
-                    .orElse(null);
+            dto.winner = bracket.getWinner().map(participantAssembler::toDto).orElse(null);
             dto.participant = participantAssembler.toDto(bracket.getParticipant());
 
             this.dto = dto;
@@ -45,9 +43,7 @@ public class BracketAssembler {
             SingleBracketDto dto = new SingleBracketDto();
 
             dto.bracketId = bracket.getBracketId().toString();
-            dto.winner = bracket.getWinner()
-                    .map(participantAssembler::toDto)
-                    .orElse(null);
+            dto.winner = bracket.getWinner().map(participantAssembler::toDto).orElse(null);
             dto.participantOne = participantAssembler.toDto(bracket.getParticipantOne());
             dto.participantTwo = participantAssembler.toDto(bracket.getParticipantTwo());
 
@@ -59,9 +55,7 @@ public class BracketAssembler {
             IntermediateBracketDto dto = new IntermediateBracketDto();
 
             dto.bracketId = bracket.getBracketId().toString();
-            dto.winner = bracket.getWinner()
-                    .map(participantAssembler::toDto)
-                    .orElse(null);
+            dto.winner = bracket.getWinner().map(participantAssembler::toDto).orElse(null);
             dto.bracketOne = toDto(bracket.getBracketOne());
             dto.bracketTwo = toDto(bracket.getBracketTwo());
 
