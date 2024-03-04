@@ -66,7 +66,7 @@ jobs:
             const { number } = context.issue;
             
             let message = '';
-            const failedJobs = workflow_run.jobs.filter(job => job.conclusion === 'failure');
+            const failedJobs = workflow.jobs.filter(job => job.conclusion === 'failure');
             message += `🚨 CI failed job ${failedJobs.length}\n\n`;
             
             if (failedJobs.length > 0) {
