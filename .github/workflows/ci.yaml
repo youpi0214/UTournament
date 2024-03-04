@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - experimental
-      - "tp*"
+
   pull_request:
     branches:
       - main
@@ -65,22 +65,26 @@ jobs:
         with:
           script: |
             const { owner, repo } = context.repo;
-            const { number } = context.issue;
+            const { number, pull_request } = context.issue;
 
-            let message = '';
-
-            message = ':x:A Workflow Job failed, please click on **Show all checks** for more details\n';
-            message += '\nRemember: always format, compile and test your code before attempting a push.\nThanks!'
-
-
-            const body = {
-              owner,
-              repo,
-              issue_number: number,
-              body: message
-            };
-
-            await github.rest.issues.createComment(body);
+            if(pull_request) {
+            
+              let message = '';
+  
+              message = ':x:A Workflow Job failed, please click on **Show all checks** for more details\n';
+              message += '\nRemember: always format, compile and test your code before attempting a push.\nThanks!'
+  
+  
+              const body = {
+                owner,
+                repo,
+                issue_number: number,
+                body: message
+              };
+  
+              await github.rest.issues.createComment(body);
+            }
+            
             
             
             
