@@ -68,7 +68,9 @@ jobs:
             let message = '';
             
             if (github.event_name === 'workflow_run') {
+             
               const failedJobs = github.workflow_run.jobs.filter(job => job.conclusion === 'failure');
+              message += `🚨 CI failed job ${failedJobs.length}\n\n`;
               if (failedJobs.length > 0) {
                 const failedJob = failedJobs[0]; // only one job can fail since we have continue-on-error: false
                 message = `❌ ${failedJob.name} failed`;
