@@ -37,9 +37,7 @@ class TournamentServiceIntegratedTest {
         TournamentRepository tournamentRepository = new InMemoryTournamentRepository();
         FindPlayableBracketsVisitor findPlayableBracketsVisitor = new FindPlayableBracketsVisitor();
         WinBracketVisitor winBracketVisitor = new WinBracketVisitor();
-        tournamentService = new TournamentService(tournamentFactory,
-                tournamentRepository,
-                findPlayableBracketsVisitor,
+        tournamentService = new TournamentService(tournamentFactory, tournamentRepository, findPlayableBracketsVisitor,
                 winBracketVisitor);
         participants = ParticipantTestUtils.createParticipants(NUM_PARTICIPANTS);
         participantDtos = ParticipantTestUtils.createParticipantDtos(NUM_PARTICIPANTS);
@@ -62,8 +60,7 @@ class TournamentServiceIntegratedTest {
 
         tournamentService.deleteTournament(tournamentIdString);
 
-        assertThrows(TournamentNotFoundException.class,
-                () -> tournamentService.getTournament(tournamentIdString));
+        assertThrows(TournamentNotFoundException.class, () -> tournamentService.getTournament(tournamentIdString));
     }
 
     @Test

@@ -27,10 +27,8 @@ public class TournamentService {
     private final FindPlayableBracketsVisitor findPlayableBracketsVisitor;
     private final WinBracketVisitor winBracketVisitor;
 
-    public TournamentService(TournamentFactory tournamentFactory,
-                             TournamentRepository tournamentRepository,
-                             FindPlayableBracketsVisitor findPlayableBracketsVisitor,
-                             WinBracketVisitor winBracketVisitor) {
+    public TournamentService(TournamentFactory tournamentFactory, TournamentRepository tournamentRepository,
+            FindPlayableBracketsVisitor findPlayableBracketsVisitor, WinBracketVisitor winBracketVisitor) {
         this.tournamentFactory = tournamentFactory;
         this.tournamentRepository = tournamentRepository;
         this.findPlayableBracketsVisitor = findPlayableBracketsVisitor;
@@ -41,8 +39,7 @@ public class TournamentService {
     }
 
     public TournamentId createTournament(String name, List<ParticipantDto> participantDtos) {
-        List<Participant> participants = participantDtos.stream()
-                .map(participantAssembler::fromDto)
+        List<Participant> participants = participantDtos.stream().map(participantAssembler::fromDto)
                 .collect(Collectors.toList());
         Tournament tournament = tournamentFactory.createTournament(name, participants);
         tournamentRepository.save(tournament);
@@ -58,8 +55,7 @@ public class TournamentService {
 
     private Tournament getTournament(TournamentId tournamentId) {
         Optional<Tournament> optionalTournament = tournamentRepository.get(tournamentId);
-        return optionalTournament.orElseThrow(
-                () -> new TournamentNotFoundException(tournamentId));
+        return optionalTournament.orElseThrow(() -> new TournamentNotFoundException(tournamentId));
     }
 
     public void deleteTournament(String tournamentIdString) {
@@ -75,8 +71,7 @@ public class TournamentService {
         findPlayableBracketsVisitor.reset();
 
         bracket.accept(findPlayableBracketsVisitor);
-        List<BracketDto> result = findPlayableBracketsVisitor.getPlayable().stream()
-                .map(bracketAssembler::toDto)
+        List<BracketDto> result = findPlayableBracketsVisitor.getPlayable().stream().map(bracketAssembler::toDto)
                 .collect(Collectors.toList());
 
         findPlayableBracketsVisitor.reset();

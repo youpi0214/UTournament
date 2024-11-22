@@ -8,11 +8,15 @@ public class SingleBracketDto extends BracketDto {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        if (!super.equals(o))
+            return false;
         SingleBracketDto that = (SingleBracketDto) o;
-        return Objects.equals(participantOne, that.participantOne) && Objects.equals(participantTwo, that.participantTwo);
+        return Objects.equals(participantOne, that.participantOne)
+                && Objects.equals(participantTwo, that.participantTwo);
     }
 
     @Override

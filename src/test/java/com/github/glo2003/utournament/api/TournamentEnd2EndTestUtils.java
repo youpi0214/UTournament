@@ -37,8 +37,7 @@ public class TournamentEnd2EndTestUtils {
         TournamentCreation tournamentCreation = new TournamentCreation();
         tournamentCreation.name = tournamentName;
         tournamentCreation.participants = participantDtos;
-        return given().body(tournamentCreation).
-                when().post(BASE_URL + "/");
+        return given().body(tournamentCreation).when().post(BASE_URL + "/");
     }
 
     public static Response getTournament(String tournamentId) {

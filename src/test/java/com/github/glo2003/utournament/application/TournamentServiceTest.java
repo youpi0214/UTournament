@@ -66,7 +66,8 @@ class TournamentServiceTest {
         participantDtos = ParticipantTestUtils.createParticipantDtos(NUM_PARTICIPANT);
 
         BracketId id = new BracketId();
-        tournament = new Tournament(TOURNAMENT_ID, TOURNAMENT_NAME, participants, new ByeBracket(id, participants.get(0)));
+        tournament = new Tournament(TOURNAMENT_ID, TOURNAMENT_NAME, participants,
+                new ByeBracket(id, participants.get(0)));
 
         tournamentDto = new TournamentDto();
         tournamentDto.name = TOURNAMENT_NAME;
@@ -80,9 +81,7 @@ class TournamentServiceTest {
 
         tournamentDto.bracket = bracketDto;
 
-        tournamentService = new TournamentService(tournamentFactory,
-                tournamentRepository,
-                findPlayableBracketsVisitor,
+        tournamentService = new TournamentService(tournamentFactory, tournamentRepository, findPlayableBracketsVisitor,
                 winBracketVisitor);
     }
 
@@ -114,8 +113,7 @@ class TournamentServiceTest {
 
     @Test
     void throwsWhenInvalidTournamentId() {
-        assertThrows(InvalidTournamentIdException.class,
-                () -> tournamentService.getTournament(INVALID_ID_STRING));
+        assertThrows(InvalidTournamentIdException.class, () -> tournamentService.getTournament(INVALID_ID_STRING));
     }
 
     @Test
@@ -130,11 +128,8 @@ class TournamentServiceTest {
     @Test
     void canGetPlayableBrackets() {
         ByeBracket bracket = mock(ByeBracket.class);
-        Tournament tournament = new Tournament(
-                this.tournament.getTournamentId(),
-                this.tournament.getName(),
-                this.tournament.getParticipants(),
-                bracket);
+        Tournament tournament = new Tournament(this.tournament.getTournamentId(), this.tournament.getName(),
+                this.tournament.getParticipants(), bracket);
         List<Bracket> brackets = createBrackets(NUM_BRACKETS);
         doCallRealMethod().when(bracket).accept(findPlayableBracketsVisitor);
         when(tournamentRepository.get(TOURNAMENT_ID)).thenReturn(Optional.of(tournament));
@@ -152,11 +147,8 @@ class TournamentServiceTest {
         BracketId bracketId = new BracketId();
         String bracketIdString = bracketId.toString();
         ByeBracket bracket = new ByeBracket(bracketId, PARTICIPANT);
-        Tournament tournament = new Tournament(
-                this.tournament.getTournamentId(),
-                this.tournament.getName(),
-                this.tournament.getParticipants(),
-                bracket);
+        Tournament tournament = new Tournament(this.tournament.getTournamentId(), this.tournament.getName(),
+                this.tournament.getParticipants(), bracket);
         when(tournamentRepository.get(TOURNAMENT_ID)).thenReturn(Optional.of(tournament));
         when(winBracketVisitor.hasWon()).thenReturn(true);
 
@@ -170,11 +162,8 @@ class TournamentServiceTest {
         BracketId bracketId = new BracketId();
         String bracketIdString = bracketId.toString();
         ByeBracket bracket = mock(ByeBracket.class);
-        Tournament tournament = new Tournament(
-                this.tournament.getTournamentId(),
-                this.tournament.getName(),
-                this.tournament.getParticipants(),
-                bracket);
+        Tournament tournament = new Tournament(this.tournament.getTournamentId(), this.tournament.getName(),
+                this.tournament.getParticipants(), bracket);
         ParticipantDto winnerDto = new ParticipantDto();
         doCallRealMethod().when(bracket).accept(winBracketVisitor);
         when(tournamentRepository.get(TOURNAMENT_ID)).thenReturn(Optional.of(tournament));
@@ -190,11 +179,8 @@ class TournamentServiceTest {
         BracketId bracketId = new BracketId();
         String bracketIdString = bracketId.toString();
         ByeBracket bracket = mock(ByeBracket.class);
-        Tournament tournament = new Tournament(
-                this.tournament.getTournamentId(),
-                this.tournament.getName(),
-                this.tournament.getParticipants(),
-                bracket);
+        Tournament tournament = new Tournament(this.tournament.getTournamentId(), this.tournament.getName(),
+                this.tournament.getParticipants(), bracket);
         ParticipantDto winnerDto = new ParticipantDto();
         doCallRealMethod().when(bracket).accept(winBracketVisitor);
         when(tournamentRepository.get(TOURNAMENT_ID)).thenReturn(Optional.of(tournament));

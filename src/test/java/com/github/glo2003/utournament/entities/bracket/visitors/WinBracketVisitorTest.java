@@ -1,6 +1,5 @@
 package com.github.glo2003.utournament.entities.bracket.visitors;
 
-
 import com.github.glo2003.utournament.entities.Participant;
 import com.github.glo2003.utournament.entities.bracket.*;
 import com.github.glo2003.utournament.entities.bracket.exceptions.WinBracketVisitorNotStartedException;

@@ -37,10 +37,8 @@ public class TournamentResource {
             });
             post("/", (req, res) -> {
                 TournamentCreation tournamentCreation = gson.fromJson(req.body(), TournamentCreation.class);
-                TournamentId id = tournamentService.createTournament(
-                        tournamentCreation.name,
-                        tournamentCreation.participants
-                );
+                TournamentId id = tournamentService.createTournament(tournamentCreation.name,
+                        tournamentCreation.participants);
                 res.header("Location", id.toString());
                 return "";
             }, gson::toJson);

@@ -32,19 +32,17 @@ public class ApplicationContext {
         TournamentRepository tournamentRepository = getTournamentRepository();
         FindPlayableBracketsVisitor findPlayableBracketsVisitor = new FindPlayableBracketsVisitor();
         WinBracketVisitor winBracketVisitor = new WinBracketVisitor();
-        TournamentService tournamentService = new TournamentService(tournamentFactory,
-                tournamentRepository,
-                findPlayableBracketsVisitor,
-                winBracketVisitor);
+        TournamentService tournamentService = new TournamentService(tournamentFactory, tournamentRepository,
+                findPlayableBracketsVisitor, winBracketVisitor);
         return new TournamentResource(tournamentService);
     }
 
     public TournamentRepository getTournamentRepository() {
         switch (applicationMode) {
-            case Dev:
-                return new InMemoryTournamentRepository();
-            default:
-                throw new UnsupportedOperationException("Mode " + applicationMode + " not handled");
+        case Dev:
+            return new InMemoryTournamentRepository();
+        default:
+            throw new UnsupportedOperationException("Mode " + applicationMode + " not handled");
         }
     }
 
@@ -52,8 +50,7 @@ public class ApplicationContext {
         String mode = System.getenv("MODE");
         if (mode == null) {
             logger.warning(
-                    "WARNING: The server mode could not be found with 'MODE' env var. Using the default one Dev"
-            );
+                    "WARNING: The server mode could not be found with 'MODE' env var. Using the default one Dev");
             return ApplicationMode.Dev;
         } else if (mode.equals("DEV")) {
             return ApplicationMode.Dev;
@@ -72,8 +69,7 @@ public class ApplicationContext {
             return Integer.parseInt(System.getenv("PORT"));
         } catch (NumberFormatException e) {
             logger.warning(
-                    "WARNING: The server port could not be found with 'PORT' env var. Using the default one (9090)"
-            );
+                    "WARNING: The server port could not be found with 'PORT' env var. Using the default one (9090)");
             return 8080;
         }
     }

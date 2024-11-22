@@ -37,7 +37,7 @@ class FindPlayableBracketsVisitorTest {
     Bracket bracketTwo;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         findPlayableBracketsVisitor = new FindPlayableBracketsVisitor();
     }
 
